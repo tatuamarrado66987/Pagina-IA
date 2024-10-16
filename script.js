@@ -1,31 +1,56 @@
-const caixaPrincipal = document.querySelector(".caixa-principal");
-const caixaPerguntas = document.querySelector(".caixa-perguntas");
-const caixaAltermativas = document.querySelector(".caixa-alternativas");
-const caixaResultados = document.querySelector(".caixa-resultados");
-const textoResultados = document.querySelector(".texto-resultados");
+const caixaPrincipal = document.querySelector(".caixa-Principal");
+const caixaPerguntas = document.querySelector(".caixa-Perguntas");
+const caixaAltermativas = document.querySelector(".caixa-Alternativas");
+const caixaResultados = document.querySelector(".caixa-Resultados");
+const textoResultados = document.querySelector(".texto-Resultados");
 
 const perguntas = [
     {
         enunciado: "Qual foi o inventor da honda?",
         alternativas: [
-        "Torakusu yamaha",
-        "soichiro honda"
+            {
+                texto: "Torakusu yamaha",
+                afirmacao: "afirmação"
+            }
+            ,
+            {
+                texto: "soichiro honda",
+                afirmacao: "afirmação"
+            },
+
         ]
 
     },
     {
         enunciado: "A motocicleta titan 150 é de qual fabricante",
         alternativas: [
-        "Honda",
-        "Yamaha"
+            {
+                texto: "Honda",
+                afirmacao: "afirmação"
+            }
+            ,
+            {
+                texto: "Yamaha",
+                afirmacao: "afirmação"
+            },
+
+
         ]
 
     },
     {
         enunciado: "A motocicleta ybr 125 é de qual fabricante",
         alternativas: [
-        "Honda",
-        "Yamaha"
+            {
+                texto: "Honda",
+                afirmacao: "afirmação"
+            }
+            ,
+            {
+                texto: "Yamaha",
+                afirmacao: "afirmação"
+            },
+
         ]
 
 
@@ -33,8 +58,16 @@ const perguntas = [
     {
         enunciado: "A motocicleta xtz 125 é de qual fabricante",
         alternativas: [
-        "Honda",
-        "Yamaha"
+            {
+                texto: "Honda",
+                afirmacao: "afirmação"
+            }
+            ,
+            {
+                texto: "Yamaha",
+                afirmacao: "afirmação"
+            },
+
         ]
 
     }
@@ -49,3 +82,17 @@ function mostraPergunta() {
     caixaPerguntas.textContent = perguntaAtual.enunciado;
     mostraAltrnativas();
 }
+
+function mostraAlternativa() {
+    for (
+        const alternativa of perguntaAtual.alternativas) {
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click",function(){
+            atual++;
+            mostraPergunta();
+        });
+        caixaAltermativas.appendChild(botaolternativas);
+    }
+}
+mostraPergunta();
