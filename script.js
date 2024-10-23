@@ -76,10 +76,16 @@ const perguntas = [
 
 let atual = 0;
 let perguntaAtual;
+let historiaFinal = "";
 
 function mostraPergunta() {
+    if(atual >= perguntaAtual.length){
+        motraResultado();
+        return;
+    }
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
+    caixaAlternativa.textContent = "";
     mostraAltrnativas();
 }
 
@@ -88,11 +94,18 @@ function mostraAlternativa() {
         const alternativa of perguntaAtual.alternativas) {
         const botaoAlternativas = document.createElement("button");
         botaoAlternativas.textContent = alternativa.texto;
-        botaoAlternativas.addEventListener("click",function(){
-            atual++;
-            mostraPergunta();
-        });
+        botaoAlternativas.addEventListener("click",() =>repostaSelecionada(altrnativa));
         caixaAltermativas.appendChild(botaolternativas);
     }
+}
+function respostaSelecionada(opcaoSelecionada){
+    atual++;
+    mostraPergunta();
+    const afirmacoes = opcaoSelecionada.afirmaco
+}
+function mostraResultado(){
+    caixapeerguntas.textContent = "Em 2049. . .";
+    textoResultados.textContent = historiaFinal += afirmacoes + " ";
+    caixaAltermativas.textContent = "";
 }
 mostraPergunta();
